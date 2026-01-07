@@ -222,6 +222,56 @@ function randomRecipe() {
 }
 
 function displayRandomRecipe(recipe) {
+  let ingredients = "";
+
+  for (let i = 0; i < recipe.ingredients.length; i++) {
+    ingredients += `
+                  <div class="d-flex align-items-center mb-3">
+                    <div
+                      class="text-white rounded-circle d-flex justify-content-center align-items-center me-3 flex-shrink-0 fw-bold bg-orange step-circle-sm"
+                    >
+                    ${i + 1}
+                    </div>
+                    <span class="text-dark">${recipe.ingredients[i]}</span>
+                  </div>`;
+  }
+
+  let instructions = "";
+
+  for (let i = 0; i < recipe.instructions.length; i++) {
+    instructions += `
+                  <div class="d-flex mb-4">
+                    <div
+                      class="flex-shrink-0 d-flex justify-content-center align-items-center text-white fw-bold rounded-4 bg-orange step-circle-lg"
+                    >
+                      ${i + 1}
+                    </div>
+                    <div class="ms-3">
+                      <p class="mb-0 text-muted">
+                        ${recipe.instructions[i]}
+                      </p>
+                    </div>
+                  </div>`;
+  }
+
+  let tips = "";
+
+  for (let i = 0; i < recipe.tips.length; i++) {
+    tips += `
+                  <div
+                    class="p-3 rounded-3 d-flex align-items-center gap-3 tip-card"
+                  >
+                    <div
+                      class="rounded-circle bg-warning text-white d-flex align-items-center justify-content-center flex-shrink-0 step-circle-sm"
+                    >
+                      <i class="fa-solid fa-check" style="font-size: 12px"></i>
+                    </div>
+                    <span class="text-dark"
+                      >${recipe.tips[i]}</span
+                    >
+                  </div>`;
+  }
+
   var cartona = ` 
     <section class="container my-5">
       <div class="card border-0 shadow-lg overflow-hidden rounded-4">
@@ -229,7 +279,7 @@ function displayRandomRecipe(recipe) {
           <div class="col-lg-5 position-relative">
             <img
               src="${recipe.image}"
-              class="img-fluid h-100 w-100 object-fit-cover min-h-400"
+              class="w-100 recipe-image rounded-start-4"
               alt="${recipe.name}"
             />
 
@@ -369,19 +419,7 @@ function displayRandomRecipe(recipe) {
                 tabindex="0"
               >
                 <div class="p-4 rounded-4 mb-4 bg-beige scrollable-content">
-                  ${recipe.ingredients
-                    .map(
-                      (ingredient, index) => `
-                  <div class="d-flex align-items-center mb-3">
-                    <div
-                      class="text-white rounded-circle d-flex justify-content-center align-items-center me-3 flex-shrink-0 fw-bold bg-orange step-circle-sm"
-                    >
-                    ${index + 1}
-                    </div>
-                    <span class="text-dark">${ingredient}</span>
-                  </div>`
-                    )
-                    .join("")}
+                  ${ingredients}
                 </div>
               </div>
 
@@ -393,23 +431,7 @@ function displayRandomRecipe(recipe) {
                 tabindex="0"
               >
                 <div class="pe-2 mb-4 scrollable-content">
-                  ${recipe.instructions
-                    .map(
-                      (instruction, index) => `
-                  <div class="d-flex mb-4">
-                    <div
-                      class="flex-shrink-0 d-flex justify-content-center align-items-center text-white fw-bold rounded-4 bg-orange step-circle-lg"
-                    >
-                      ${index + 1}
-                    </div>
-                    <div class="ms-3">
-                      <p class="mb-0 text-muted">
-                        ${instruction}
-                      </p>
-                    </div>
-                  </div>`
-                    )
-                    .join("")}
+                  ${instructions}
                 </div>
               </div>
 
@@ -522,23 +544,7 @@ function displayRandomRecipe(recipe) {
                 tabindex="0"
               >
                 <div class="d-flex flex-column gap-3 mb-4">
-                  ${recipe.tips
-                    .map(
-                      (tip) => `
-                  <div
-                    class="p-3 rounded-3 d-flex align-items-center gap-3 tip-card"
-                  >
-                    <div
-                      class="rounded-circle bg-warning text-white d-flex align-items-center justify-content-center flex-shrink-0 step-circle-sm"
-                    >
-                      <i class="fa-solid fa-check" style="font-size: 12px"></i>
-                    </div>
-                    <span class="text-dark"
-                      >${tip}</span
-                    >
-                  </div>`
-                    )
-                    .join("")}
+                  ${tips}
                 </div>
             </div>
             </div>

@@ -18,130 +18,106 @@ nav {
   width: 2.3rem;
   height: 2.3rem;
 }
-
 .profile-image {
   width: 40px;
   height: 40px;
   border: solid #ffb86a 2px;
 }
-
 .nav-item i {
   font-size: 1.2rem;
   color: #4a5565;
   cursor: pointer;
   margin-right: 15px;
 }
-
 .nav-tabs .nav-link {
   color: #6c757d;
   border: none;
   border-bottom: 2px solid transparent;
   font-weight: 500;
 }
-
 .nav-tabs .nav-link:hover {
   color: #ff5013;
   border-color: transparent;
   isolation: isolate;
 }
-
 .nav-tabs .nav-link.active {
   color: #ff5013 !important;
   background-color: transparent;
   border-bottom: 2px solid #ff5013 !important;
   font-weight: bold;
 }
-
-.min-h-400 {
-  min-height: 400px;
+.recipe-image {
+  height: 700px;
+  object-fit: cover;
 }
-
 .text-xs {
   font-size: 0.8rem;
 }
-
 .bg-orange {
   background-color: #ff5013;
 }
-
 .text-orange {
   color: #ff5013;
 }
-
 .bg-orange-subtle {
   background-color: #fff5eb;
 }
-
 .bg-beige {
   background-color: #fffbeb;
 }
-
 .scrollable-content {
   max-height: 300px;
   overflow-y: auto;
 }
-
 .step-circle-sm {
   width: 24px;
   height: 24px;
   font-size: 12px;
 }
-
 .step-circle-lg {
   width: 40px;
   height: 40px;
 }
-
 .nutrient-icon {
   width: 32px;
   height: 32px;
 }
-
 .nutrient-calories {
   background-color: #fff5eb;
   color: #ff5013;
 }
-
 .nutrient-protein {
   background-color: #eef6ff;
   color: #0d6efd;
 }
-
 .nutrient-carbs {
   background-color: #fff9db;
   color: #ffc107;
 }
-
 .nutrient-fat {
   background-color: #fff2f2;
   color: #dc3545;
 }
-
 .nutrient-fiber {
   background-color: #e8f5e9;
   color: #198754;
 }
-
 .nutrient-sodium {
   background-color: #fce4ec;
   color: #d63384;
 }
-
 .tip-card {
   background-color: #fffbeb;
   border-left: 4px solid #ffb900;
 }
-
 .btn-primary-orange {
   background-color: #ff5013;
   color: white;
 }
-
 .btn-primary-orange:hover {
   background-color: #e04610;
   color: white;
 }
-
 .hover-orange:hover {
   background-color: #ff82484d;
   border: none;
