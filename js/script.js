@@ -556,9 +556,9 @@ function displayRandomRecipe(recipe) {
             </button>
           </div>
         </div>
-         
       </section>
         `;
+    
   document.getElementById("recipe-container").innerHTML = cartona;
 }
 
