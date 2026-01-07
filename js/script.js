@@ -2,8 +2,8 @@ function Recipe() {
   let recipes = [
     {
       name: "Beef Tacos",
-      image:
-        "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Flavorful Mexican tacos with seasoned ground beef",
+      image: "images/Beef Tacos.jpg",
       rating: 4.6,
       reviews: 278,
       prepTime: "15 min",
@@ -45,8 +45,8 @@ function Recipe() {
     },
     {
       name: "Classic Margherita Pizza",
-      image:
-        "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Authentic Italian pizza with fresh basil and mozzarella",
+      image: "images/Classic Margherita Pizzas.jpg",
       rating: 4.8,
       reviews: 342,
       prepTime: "20 min",
@@ -85,8 +85,8 @@ function Recipe() {
     },
     {
       name: "Grilled Lemon Herb Chicken",
-      image:
-        "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Juicy chicken breasts marinated in lemon and herbs",
+      image: "images/Grilled Lemon Herb Chicken.jpg",
       rating: 4.7,
       reviews: 189,
       prepTime: "10 min",
@@ -125,8 +125,8 @@ function Recipe() {
     },
     {
       name: "Vegetarian Stir-Fry",
-      image:
-        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Healthy and colorful vegetable stir-fry with tofu",
+      image: "images/Vegetarian Stir-Fry.jpg",
       rating: 4.5,
       reviews: 156,
       prepTime: "15 min",
@@ -168,8 +168,8 @@ function Recipe() {
     },
     {
       name: "Chocolate Chip Cookies",
-      image:
-        "https://images.unsplash.com/photo-1499636138143-bd630f5cf386?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Classic homemade cookies with gooey chocolate chips",
+      image: "images/Chocolate Chip Cookies.jpg",
       rating: 4.9,
       reviews: 512,
       prepTime: "15 min",
@@ -216,6 +216,344 @@ function Recipe() {
 function randomRecipe() {
   const recipes = Recipe();
   const randomIndex = Math.floor(Math.random() * recipes.length);
-  console.log(recipes[randomIndex]);
-  return randomIndex;
+  const currentRecipe = recipes[randomIndex];
+  console.log(currentRecipe);
+  displayRandomRecipe(currentRecipe);
 }
+
+function displayRandomRecipe(recipe) {
+  var cartona = ` 
+    <section class="container my-5">
+      <div class="card border-0 shadow-lg overflow-hidden rounded-4">
+       <div class="row g-0">
+          <div class="col-lg-5 position-relative">
+            <img
+              src="${recipe.image}"
+              class="img-fluid h-100 w-100 object-fit-cover min-h-400"
+              alt="${recipe.name}"
+            />
+
+            <div
+              class="position-absolute top-0 start-0 m-4 bg-white px-3 py-2 rounded-pill shadow-sm d-flex align-items-center gap-2"
+            >
+              <i class="fa-solid fa-star text-warning"></i>
+              <span class="fw-bold">${recipe.rating}</span>
+              <span class="text-muted small">(${recipe.reviews} reviews)</span>
+            </div>
+
+            <div
+              class="position-absolute bottom-0 start-50 translate-middle-x mb-4 w-75"
+            >
+              <div
+                class="bg-white p-3 rounded-4 shadow-sm d-flex justify-content-between text-center px-4"
+              >
+                <div class="d-flex flex-column align-items-center">
+                  <i class="fa-regular fa-clock text-warning mb-1 fs-5"></i>
+                  <div class="text-muted text-xs">Prep Time</div>
+                  <div class="fw-bold small">${recipe.prepTime}</div>
+                </div>
+                <div class="d-flex flex-column align-items-center">
+                  <i class="fa-solid fa-fire-burner text-danger mb-1 fs-5"></i>
+                  <div class="text-muted text-xs">Cook Time</div>
+                  <div class="fw-bold small">${recipe.cookTime}</div>
+                </div>
+                <div class="d-flex flex-column align-items-center">
+                  <i class="fa-solid fa-users text-primary mb-1 fs-5"></i>
+                  <div class="text-muted text-xs">Servings</div>
+                  <div class="fw-bold small">${recipe.servings}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7 p-4 p-lg-5">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div>
+                <span
+                  class="badge bg-success-subtle text-success rounded-pill px-3 py-2 me-2"
+                  >Easy</span
+                >
+                <span
+                  class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2"
+                  >American</span
+                >
+              </div>
+              <div class="d-flex gap-2">
+                <button
+                  class="btn btn-light rounded-2 text-warning bg-orange-subtle hover-orange"
+                >
+                  <i class="fa-solid fa-bookmark text-orange"></i>
+                </button>
+                <button
+                  class="btn btn-light rounded-2 text-warning bg-orange-subtle hover-orange"
+                >
+                  <i class="fa-solid fa-share-nodes text-orange"></i>
+                </button>
+              </div>
+            </div>
+
+            <h2 class="fw-bold mb-2 display-6">${recipe.name}</h2>
+            <p class="text-muted mb-4">
+              ${recipe.description}
+            </p>
+
+            <ul
+              class="nav nav-tabs border-0 mb-4 gap-4"
+              id="recipeTabs"
+              role="tablist"
+            >
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active px-0 pb-2"
+                  id="ingredients-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#ingredients"
+                  type="button"
+                  role="tab"
+                  aria-controls="ingredients"
+                  aria-selected="true"
+                >
+                  Ingredients
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link px-0 pb-2"
+                  id="instructions-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#instructions"
+                  type="button"
+                  role="tab"
+                  aria-controls="instructions"
+                  aria-selected="false"
+                >
+                  Instructions
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link px-0 pb-2"
+                  id="nutrition-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nutrition"
+                  type="button"
+                  role="tab"
+                  aria-controls="nutrition"
+                  aria-selected="false"
+                >
+                  Nutrition
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link px-0 pb-2"
+                  id="tips-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#tips"
+                  type="button"
+                  role="tab"
+                  aria-controls="tips"
+                  aria-selected="false"
+                >
+                  Chef's Tips
+                </button>
+              </li>
+            </ul>
+
+            <div class="tab-content" id="recipeTabsContent">
+              <div
+                class="tab-pane fade show active"
+                id="ingredients"
+                role="tabpanel"
+                aria-labelledby="ingredients-tab"
+                tabindex="0"
+              >
+                <div class="p-4 rounded-4 mb-4 bg-beige scrollable-content">
+                  ${recipe.ingredients
+                    .map(
+                      (ingredient, index) => `
+                  <div class="d-flex align-items-center mb-3">
+                    <div
+                      class="text-white rounded-circle d-flex justify-content-center align-items-center me-3 flex-shrink-0 fw-bold bg-orange step-circle-sm"
+                    >
+                    ${index + 1}
+                    </div>
+                    <span class="text-dark">${ingredient}</span>
+                  </div>`
+                    )
+                    .join("")}
+                </div>
+              </div>
+
+              <div
+                class="tab-pane fade"
+                id="instructions"
+                role="tabpanel"
+                aria-labelledby="instructions-tab"
+                tabindex="0"
+              >
+                <div class="pe-2 mb-4 scrollable-content">
+                  ${recipe.instructions
+                    .map(
+                      (instruction, index) => `
+                  <div class="d-flex mb-4">
+                    <div
+                      class="flex-shrink-0 d-flex justify-content-center align-items-center text-white fw-bold rounded-4 bg-orange step-circle-lg"
+                    >
+                      ${index + 1}
+                    </div>
+                    <div class="ms-3">
+                      <p class="mb-0 text-muted">
+                        ${instruction}
+                      </p>
+                    </div>
+                  </div>`
+                    )
+                    .join("")}
+                </div>
+              </div>
+
+              <div
+                class="tab-pane fade"
+                id="nutrition"
+                role="tabpanel"
+                aria-labelledby="nutrition-tab"
+                tabindex="0"
+              >
+                <div class="row g-3 mb-4">
+                  <div class="col-6">
+                    <div
+                      class="p-3 rounded-4 d-flex align-items-center justify-content-between bg-light"
+                    >
+                      <div class="d-flex align-items-center gap-2">
+                        <div
+                          class="rounded-circle d-flex align-items-center justify-content-center nutrient-icon nutrient-calories"
+                        >
+                          <i class="fa-solid fa-fire"></i>
+                        </div>
+                        <span class="text-muted small">Calories</span>
+                      </div>
+                      <span class="fw-bold">${recipe.nutrition.calories}</span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div
+                      class="p-3 rounded-4 d-flex align-items-center justify-content-between bg-light"
+                    >
+                      <div class="d-flex align-items-center gap-2">
+                        <div
+                          class="rounded-circle d-flex align-items-center justify-content-center nutrient-icon nutrient-protein"
+                        >
+                          <i class="fa-solid fa-dumbbell"></i>
+                        </div>
+                        <span class="text-muted small">Protein</span>
+                      </div>
+                      <span class="fw-bold">${recipe.nutrition.protein}</span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div
+                      class="p-3 rounded-4 d-flex align-items-center justify-content-between bg-light"
+                    >
+                      <div class="d-flex align-items-center gap-2">
+                        <div
+                          class="rounded-circle d-flex align-items-center justify-content-center nutrient-icon nutrient-carbs"
+                        >
+                          <i class="fa-solid fa-wheat-awn"></i>
+                        </div>
+                        <span class="text-muted small">Carbohydrates</span>
+                      </div>
+                      <span class="fw-bold">${recipe.nutrition.carbs}</span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div
+                      class="p-3 rounded-4 d-flex align-items-center justify-content-between bg-light"
+                    >
+                      <div class="d-flex align-items-center gap-2">
+                        <div
+                          class="rounded-circle d-flex align-items-center justify-content-center nutrient-icon nutrient-fat"
+                        >
+                          <i class="fa-solid fa-droplet"></i>
+                        </div>
+                        <span class="text-muted small">Fat</span>
+                      </div>
+                      <span class="fw-bold">${recipe.nutrition.fat}</span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div
+                      class="p-3 rounded-4 d-flex align-items-center justify-content-between bg-light"
+                    >
+                      <div class="d-flex align-items-center gap-2">
+                        <div
+                          class="rounded-circle d-flex align-items-center justify-content-center nutrient-icon nutrient-fiber"
+                        >
+                          <i class="fa-solid fa-seedling"></i>
+                        </div>
+                        <span class="text-muted small">Fiber</span>
+                      </div>
+                      <span class="fw-bold">${recipe.nutrition.fiber}</span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div
+                      class="p-3 rounded-4 d-flex align-items-center justify-content-between bg-light"
+                    >
+                      <div class="d-flex align-items-center gap-2">
+                        <div
+                          class="rounded-circle d-flex align-items-center justify-content-center nutrient-icon nutrient-sodium"
+                        >
+                          <i class="fa-solid fa-cube"></i>
+                        </div>
+                        <span class="text-muted small">Sodium</span>
+                      </div>
+                      <span class="fw-bold">${recipe.nutrition.sodium}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="tab-pane fade"
+                id="tips"
+                role="tabpanel"
+                aria-labelledby="tips-tab"
+                tabindex="0"
+              >
+                <div class="d-flex flex-column gap-3 mb-4">
+                  ${recipe.tips
+                    .map(
+                      (tip) => `
+                  <div
+                    class="p-3 rounded-3 d-flex align-items-center gap-3 tip-card"
+                  >
+                    <div
+                      class="rounded-circle bg-warning text-white d-flex align-items-center justify-content-center flex-shrink-0 step-circle-sm"
+                    >
+                      <i class="fa-solid fa-check" style="font-size: 12px"></i>
+                    </div>
+                    <span class="text-dark"
+                      >${tip}</span
+                    >
+                  </div>`
+                    )
+                    .join("")}
+                </div>
+            </div>
+            </div>
+            <button
+              class="btn btn-primary-orange w-auto px-4 py-2 fw-bold rounded-3 border-0"
+              onclick="randomRecipe()"
+            >
+              <i class="fa-solid fa-rotate-right me-2"></i> Try Another Recipe
+            </button>
+          </div>
+        </div>
+         
+      </section>
+        `;
+  document.getElementById("recipe-container").innerHTML = cartona;
+}
+
+randomRecipe();
